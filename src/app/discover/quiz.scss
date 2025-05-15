@@ -1,0 +1,352 @@
+/* Grunnleggende reset for å sikre at sticky fungerer */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.quiz-page {
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Sikrer at siden minst fyller skjermhøyden, og kan scrolle hvis innholdet er lengre */
+  width: 100%;
+}
+
+.title-page {
+  color: var(--purple-main);
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.quiz-page-layout {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  min-height: calc(100vh - 10rem); /* Gi nok høyde til containeren */
+  align-items: flex-start; /* Viktig for at sticky skal fungere i flex-containere */
+
+  &.with-details {
+    .quiz-list-container {
+      width: calc(60% - 1rem); /* 60% minus halvparten av gap */
+    }
+  }
+}
+
+.quiz-details-sidebar {
+  background-color: var(--white);
+  position: sticky;
+  top: 2rem;
+  align-self: flex-start; /* Viktig for sticky i flex-containere */
+  height: 100%;
+  min-height: calc(100vh - 4rem);
+  width: 25vw;
+  border-radius: 1rem;
+  padding: 1.5rem;
+
+  animation: slideIn 0.5s ease;
+  z-index: 10; /* Sikrer at den vises over andre elementer */
+  overflow-y: auto; /* Tilgjengelig scrolling hvis innholdet er høyt */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.quiz-details-title {
+  color: var(--purple-main);
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.quiz-details-actions {
+  margin-top: 2rem;
+}
+
+.quiz-details-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  text-align: center;
+
+  h2 {
+    color: var(--purple-main);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--grey-dark);
+  }
+}
+
+.quiz-list-container {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  transition: width 0.3s ease;
+}
+
+.quiz-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
+  gap: 2rem 1rem;
+  width: 100%;
+}
+
+.quiz-item {
+  background-color: var(--grey-light);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.quiz-background {
+  background-color: var(--pink-light);
+  border-radius: 1rem;
+  width: 100%;
+  position: relative; /* Nødvendig for next/image med layout='fill' */
+  aspect-ratio: 16 / 9; /* Setter et standard sideforhold for bildecontaineren */
+  overflow: hidden; /* Viktig: hindrer at bildet går utenfor på hover */
+
+  img {
+    border-radius: 1rem;
+    transition: transform 0.3s ease; /* Legg til transition på selve bildet, ikke bare på hover */
+  }
+}
+
+.quiz-info {
+  padding: 0.8rem;
+}
+
+.quiz-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--purple-main);
+  margin: 0; /* Fjerner standard H2-margin */
+  /* Sørger for at lang tekst brytes */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Media Query for mindre skjermer */
+@media (max-width: 1400px) {
+  .quiz-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quiz-page-layout.with-details {
+    .quiz-list-container {
+      width: calc(50% - 1rem);
+    }
+  }
+
+  .quiz-details-sidebar {
+    width: 50%;
+  }
+}
+
+@media (max-width: 900px) {
+  .quiz-page-layout {
+    flex-direction: column;
+
+    &.with-details {
+      .quiz-list-container {
+        width: 100%;
+      }
+    }
+  }
+
+  .quiz-details-sidebar {
+    position: relative; /* Ikke sticky på mindre skjermer */
+    width: 100%;
+    margin-bottom: 2rem;
+    max-height: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .quiz-list {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-page {
+    padding: 2rem 1rem;
+  }
+}
+
+.quiz-details-image {
+  position: relative;
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.sidebar-buttons {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: space-between;
+  height: 45px;
+}
+
+.quiz-share-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border: 1px solid var(--gray-300);
+  height: 45px;
+  aspect-ratio: 1 / 1;
+  border-radius: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.buttons-more {
+  display: flex;
+  gap: 1rem;
+}
+
+.quiz-details-button {
+  background-color: var(--purple-secondary);
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.8rem 3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--purple-200);
+  }
+}
+
+.quiz-details-info {
+  margin-top: 3rem;
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--purple-main);
+    margin-bottom: 1rem;
+  }
+
+  .quiz-details-info-text {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray-500);
+  }
+}
+
+/* Stilregler for quiz-creator seksjonen */
+.quiz-creator {
+  border-bottom: 1px solid #eee;
+  padding: 1.5rem 0;
+}
+
+.creator-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.creator-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.made-by {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+  color: var(--gray-500);
+
+  .creator-name {
+    font-weight: 600;
+    color: var(--purple-main);
+  }
+}
+
+.quiz-data-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  img {
+    background-color: var(--gray-100);
+    border-radius: 0.5rem;
+    width: 50px;
+    height: 50px;
+    padding: 0.5rem;
+  }
+
+  .creator-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--purple-main);
+  }
+}
+
+.quiz-data-details-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.emoji-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-100);
+  border-radius: 0.5rem;
+  width: 50px;
+  height: 50px;
+  padding: 0.5rem;
+}
+
+.difficulty-emoji {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.gray-text {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  margin-bottom: 2px;
+}
