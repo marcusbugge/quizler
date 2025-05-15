@@ -1,0 +1,20 @@
+<svg width="100%" height="100%" viewBox="0 0 1440 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="1024" fill="white" />
+
+  <!-- Store figurer -->
+  <circle cx="200" cy="300" r="150" fill="#A3CEF1" />
+  <circle cx="1200" cy="200" r="120" fill="#F8B195" />
+  <rect x="800" y="600" width="300" height="300" rx="50" fill="#C7CEEA" />
+  <path d="M 100 800 Q 300 700 500 800 T 900 800" fill="none" stroke="#FFDAC1" stroke-width="80" />
+
+  <!-- Små figurer -->
+  <circle cx="400" cy="150" r="20" fill="#FF9AA2" />
+  <circle cx="1300" cy="800" r="30" fill="#B5EAD7" />
+  <rect x="1000" y="150" width="40" height="40" fill="#FFB7B2" />
+  <polygon points="700,100 720,140 680,140" fill="#E2F0CB" />
+
+  <!-- Flere små prikker for livlighet -->
+  <circle cx="300" cy="900" r="10" fill="#C7CEEA" />
+  <circle cx="600" cy="200" r="8" fill="#FFDAC1" />
+  <circle cx="1100" cy="500" r="12" fill="#A3CEF1" />
+</svg>

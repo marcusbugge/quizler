@@ -1,0 +1,84 @@
+.quizList {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 1rem;
+  flex-grow: 1;
+}
+
+.quizItem {
+  background-color: var(--grey-light);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    cursor: pointer;
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.quizBackground {
+  background-color: var(--pink-light);
+  border-radius: 1rem;
+  width: 100%;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+
+  img {
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+  }
+}
+
+.quizInfo {
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.quizInfoContainer {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 0.5rem;
+  z-index: 1;
+  display: flex;
+
+  p {
+    font-size: 0.8rem;
+    color: var(--white);
+    margin: 0;
+    margin-right: 0.5rem;
+    background-color: var(--purple-main);
+    padding: 0.3rem 1rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.quizTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--purple-main);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Media Query for mindre skjermer */
+@media (max-width: 900px) {
+  .quizList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .quizList {
+    grid-template-columns: 1fr;
+  }
+}

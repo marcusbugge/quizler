@@ -1,0 +1,259 @@
+.quiz-preview-step {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quiz-preview-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.quiz-preview-info {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.quiz-preview-header {
+  margin-bottom: 2rem;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+.quiz-preview-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+
+  span {
+    background-color: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+  }
+}
+
+.quiz-preview-sporsmal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.quiz-preview-sporsmal {
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.quiz-preview-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.quiz-preview-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &.save {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  &.cancel {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+}
+
+.quiz-preview-alternativer {
+  margin-top: 1rem;
+}
+
+.quiz-preview-alternativ {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+
+  &.riktig {
+    background-color: rgba(76, 175, 80, 0.1);
+  }
+
+  .riktig-svar {
+    color: #4caf50;
+    font-weight: bold;
+  }
+}
+
+.quiz-preview-svar {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(76, 175, 80, 0.05);
+  border-radius: 4px;
+}
+
+/* Styling for flashcard */
+.flashcard {
+  position: relative;
+  height: 200px;
+  margin: 1rem 0;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.6s;
+}
+
+.flashcard-front {
+  background-color: white;
+  z-index: 2;
+}
+
+.flashcard-back {
+  background-color: #f8f8f8;
+  transform: rotateY(180deg);
+}
+
+.flashcard.snudd .flashcard-front {
+  transform: rotateY(180deg);
+}
+
+.flashcard.snudd .flashcard-back {
+  transform: rotateY(0);
+  z-index: 3;
+}
+
+.flashcard-snu-knapp {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Redigeringsfunksjonalitet styling */
+.quiz-preview-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.rediger-knapp {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.3rem 0.75rem;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+}
+
+.quiz-redigering-knapper {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  justify-content: flex-end;
+
+  button {
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border: none;
+
+    &.rediger-lagre {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    &.rediger-avbryt {
+      background-color: #f5f5f5;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+  }
+}
+
+.sporsmal-redigering-input,
+.svar-redigering-input,
+.alternativ-redigering-input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 0 1px rgba(76, 175, 80, 0.2);
+  }
+}
+
+.true-false-redigering {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+}
+
+.aarstall-redigering {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+
+  .aarstall-input-gruppe,
+  .margin-input-gruppe {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+    &:focus {
+      outline: none;
+      border-color: #4caf50;
+    }
+  }
+}

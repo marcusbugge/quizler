@@ -1,0 +1,34 @@
+.quiz-layout {
+  width: 100%;
+  overflow: hidden;
+}
+
+.quiz-page-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.quiz-title {
+  color: var(--purple-secondary);
+  font-size: 2rem;
+  margin: 2rem 0 0 2rem;
+}
+
+.quiz-progress-text {
+  color: var(--purple-main);
+  padding-left: 2rem;
+}
+
+.quiz-completed {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.quiz-completed-leaderboard {
+  width: 20vw;
+  background-color: var(--yellow-light);
+  height: 100%;
+}
